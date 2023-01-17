@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'SportsBetting/Home.html' %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Turniej</th>
+      <th scope="col">Liga</th>
+      <th scope="col">Miejsce</th>
+      <th scope="col">Start</th>
+      <th scope="col">Koniec</th>
+      <th scope="col">Gospodarz</th>
+      <th scope="col">Gość</th>
+      <th scope="col">Kurs Gospodarz</th>
+      <th scope="col">Kurs Gość</th>
+      <th scope="col">Wynik</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in Wydarzenia %}
+        <tr>
+        <th scope="row">{{ x.wydarzenieid }}</th>
+        <td>  {{ x.turniejid.nazwa}}</td>
+      <td>{{ x.turniejid.ligaid.nazwa }}</td>
+      <td >{{ x.miejsce }}</td>
+      <td >{{ x.datastartu }}</td>
+      <td >{{ x.datazakonczenia }}</td>
+      <td>{{ x.gospodarzid.nazwa }}</td>
+      <td>{{ x.goscid.nazwa }}</td>
+      <td> <a href="/Zaklady/{{x.kursgospodarz}}" style="text-decoration: none">{{ x.kursgospodarz }}</a></td>
+            <td><a href="/Zaklady" style="text-decoration: none">{{ x.kursgosc }}</a></td>
+      <td >{{ x.wynik    }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+</body>
+</html>

@@ -9,14 +9,37 @@
     {% extends "SportsBetting/Home.html" %}
 
 {% block title %}Create an Account{% endblock %}
-{% load crispy_forms_tags %}
+
 
 {% block content %}
-   <form method="POST" class="form-group">
+
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+
+        <a class="nav-link" href="/Login">Login</a>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+   <form method="POST" class="form-group" style="margin-left: 50px">
         {% csrf_token %}
         {{ form.as_p }}
+        Pesel:  <input type="text"  name="pesel"><br><br>
+       Adres: <input type="text" name="adres"><br><br>
+       Seria: <input type="text" name="seria"><br><br>
         <button type="submit" class="btn btn-success">Zarejestruj</button>
     </form>
+   </div>
 {% endblock %}
 </body>
 </html>

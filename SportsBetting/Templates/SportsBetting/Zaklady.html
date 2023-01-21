@@ -5,20 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
+      <title>Betting System</title>
   </head>
   <body>
 	{% extends 'SportsBetting/Home.html' %}
     {% block content %}
+
             <div style="margin: auto; width: 1000px">
+            <form action="" method="post">
+                 {% csrf_token %}
             <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" value="{{ kurs}}" disabled>
+            <input name = "kurs" type="text" class="form-control" id="floatingInput" value="{{ kurs}}" disabled>
             <label for="floatingInput">Kurs</label>
             </div>
             <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input type="text" class="form-control" id="floatingInput" value="{{ uczestnik }}"disabled>
+            <label for="floatingPassword">Uczestnik</label>
             </div>
+                <div class="form-floating">
+             <input type="text" class="form-control" id="floatingInput" value="{{ user }}"disabled>
+            <label for="floatingPassword">Id Użytkownika</label>
             </div>
-    {% endblock %}
+            <div class="form-floating">
+             <input type="text" class="form-control" id="floatingInput" value="{{ data.date }}"disabled>
+            <label for="floatingPassword">Data Zakłady</label>
+            </div>
+            <div class="form-floating">
+             <input name="wysokoscZakladu" type="number" class="form-control" id="floatingInput" value="0">
+            <label for="floatingPassword">Ile chcesz obstawić</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Obstaw</button>
+            </form>
+            </div>
+
+
+
   </body>
+
+    {% endblock %}
+
+
 </html>

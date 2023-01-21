@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'SportsBetting/AdminPanel.html' %}
+{% block content %}
+<form action="" method="post" class="">
+    {% csrf_token %}
+
+    <label for="username">Username: </label>
+    <input type="text" name="username"><br><br>
+     <label for="passwd">Hasło:</label>
+    <input type="text" name="passwd"><br><br>
+    <button type="submit" class="btn btn-primary btn-lg"> Zaloguj</button>
+
+{% endblock %}
+</form>
+</body>
+</html>

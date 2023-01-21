@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Betting System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
-
+{% block content %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,17 +16,106 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="/home">Home</a>
-        <a class="nav-link" href="/Wydarzenia">Wydarzenia</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+
+        {% if not user %}
+        <a class="nav-link" href="/Rejestracja">Rejestracja</a>
+        <a class="nav-link" href="/Login">Login</a>
+        {% endif %}
+
+
+
+          {% if user %}
+            <a class="nav-link" href="/Wydarzenia">Wydarzenia</a>
+              <a class="nav-link" href="/Wyloguj">Wyloguj</a>
+          {% endif %}
+
+
       </div>
     </div>
   </div>
 </nav>
-
-
  <div id="content" name="content">
-	{% block content %}
+
+
+{% if user %}
+    <div class="container" style="display: flex; flex-direction: row; justify-content: space-between; margin-left: 0px">
+    <div>
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 320px;">
+    <a  class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">{{ user.imie }} {{  user.nazwisko }}</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a  class="nav-link link-dark" aria-current="page">
+          <svg class="bi me-2" width="320" height="16"></svg>
+          Nazwa: {{ user.username }}
+        </a>
+      </li>
+      <li>
+        <a class="nav-link link-dark">
+          <svg class="bi me-2" width="320" height="16"><use xlink:href="#speedometer2"></use></svg>
+          Email: {{ user.email }}
+        </a>
+      </li>
+      <li>
+        <a class="nav-link link-dark">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+          Saldo: {{ user.saldo }}
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-dark">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+          Products
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-dark">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Customers
+        </a>
+      </li>
+    </ul>
+    <hr>
+
+  </div>
+
+    </div>
+    <div class="w-75 p-3" >
+    <h3>Twoje zakłady</h3>
+<table class="table">
+  <thead>
+
+
+<th scope="col">Id</th>
+      <th scope="col">Wydarzenie</th>
+      <th scope="col">Kurs</th>
+      <th scope="col">Data</th>
+      <th scope="col">Ile obstawione</th>
+      <th scope="col">Możliwa wygrana</th>
+  </thead>
+  <tbody>
+{% for zaklad in zaklady %}
+
+     <tr>
+        <th scope="row">{{ zaklad.zakladid }}</th>
+        <td>  {{zaklad.wydarzenieid_id}}  {{ zaklad.wydarzenieid.turniejid.nazwa }}</td>
+         <td>{{ zaklad.wybranykurs }}</td>
+      <td>{{ zaklad.datazakladu}}</td>
+      <td >{{ zaklad.ileobstawione }}</td>
+      <td >{{ zaklad.mozliwawygrana }}</td>
+    </tr>
+
+{% endfor %}
+
+  </tbody>
+</table>
+</div>
+    </div>
+{% endif %}
+
 	{% endblock %}
     </div>
 

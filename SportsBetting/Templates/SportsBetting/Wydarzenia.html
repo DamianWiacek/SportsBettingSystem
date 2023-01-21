@@ -2,11 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Betting System</title>
 </head>
 <body>
 {% extends 'SportsBetting/Home.html' %}
 {% block content %}
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
 <table class="table">
   <thead>
     <tr>
@@ -34,8 +51,8 @@
       <td >{{ x.datazakonczenia }}</td>
       <td>{{ x.gospodarzid.nazwa }}</td>
       <td>{{ x.goscid.nazwa }}</td>
-      <td> <a href="/Zaklady/{{x.kursgospodarz}}" style="text-decoration: none">{{ x.kursgospodarz }}</a></td>
-            <td><a href="/Zaklady" style="text-decoration: none">{{ x.kursgosc }}</a></td>
+      <td> <a href="/Zaklady/{{x.gospodarzid.nazwa}}/{{ x.datazakonczenia }}/{{x.kursgospodarz}}/{{ x.wydarzenieid }}" style="text-decoration: none">{{ x.kursgospodarz }}</a></td>
+      <td><a href="/Zaklady/{{x.goscid.nazwa}}/{{ x.datazakonczenia }}/{{x.kursgosc}}/{{ x.wydarzenieid }}"  style="text-decoration: none">{{ x.kursgosc }}</a></td>
       <td >{{ x.wynik    }}</td>
     </tr>
     {% endfor %}

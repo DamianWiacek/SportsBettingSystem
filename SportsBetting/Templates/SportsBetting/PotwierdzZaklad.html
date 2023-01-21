@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Betting System</title>
+    <style>
+        .form-control {
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+{% extends 'SportsBetting/Home.html' %}
+    {% block content %}
+        <div style="margin: auto; width: 1000px">
+            <form action="/ZapiszZaklad/" method="post">
+                 {% csrf_token %}
+            <div class="form-floating mb-3">
+            <input name = "wybranykurs" type="text" class="form-control disable" id="floatingInput" value="{{ kurs}}">
+            <label for="floatingInput">Kurs</label>
+            </div>
+            <div class="form-floating">
+            <input type="text" class="form-control disable" id="floatingInput" value="{{ uczestnik }}">
+            <label for="floatingPassword">Uczestnik</label>
+            </div>
+                <div class="form-floating">
+             <input name="uzytkownikid" type="text" class="form-control disable" id="floatingInput" value="{{ user }}">
+            <label for="floatingPassword">Id Użytkownika</label>
+            </div>
+                <div class="form-floating">
+             <input name="wydarzenieid" type="number" class="form-control disable" id="floatingInput" value="{{ wydarzenieid }}">
+            <label for="floatingPassword">Id wydażenia</label>
+            </div>
+            <div class="form-floating">
+             <input name="datazakladu" type="text" class="form-control disable" id="floatingInput" value="{{ data.date }}">
+            <label for="floatingPassword">Data Zakładu</label>
+            </div>
+                <div class="form-floating">
+             <input name="ileobstawione" type="text" class="form-control disable" id="floatingInput" value="{{ ileObstawione }}" >
+            <label for="floatingPassword">Ile postawiłes</label>
+            </div>
+            <div class="form-floating">
+                <input name="mozliwawygrana" type="text" class="form-control disable" id="floatingInput" value="{{ wysokoscZakladu }}" >
+            <label for="floatingPassword">Ile możesz wygrać</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Potwierdz</button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="location.href= '/'">Anuluj</button>
+            </form>
+            </div>
+
+
+  </body>
+
+    {% endblock %}
+</body>
+</html>

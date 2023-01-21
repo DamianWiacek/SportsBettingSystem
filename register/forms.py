@@ -1,15 +1,23 @@
-from django.forms import ModelForm, forms, PasswordInput, EmailInput
-from models import Uzytkownik
+from django.forms import ModelForm, PasswordInput, EmailInput
+from django import forms
+from SportsBetting.models import Uzytkownik, Zaklad,Dowodos
 
 
 class RegisterForm(ModelForm):
-    Imie = forms.CharField(max_length=100)
-    Nazwisko = forms.CharField(max_length=100)
-    Username = forms.CharField(max_length=100)
-    Passwd = forms.CharField(widget=PasswordInput)
-    Email = forms.CharField(widget=EmailInput)
-
 
     class Meta:
         model = Uzytkownik
-        fields = ["Imie","Nazwisko","Wiek","Username","Passwd","Email","Saldo","AdresKontaBankowego","Seria","Pesel","Adres"]
+        fields = ["imie","nazwisko","wiek","username","passwd","email","adreskontabankowego"]
+
+class DowodForm(ModelForm):
+    uzytkownikid = forms.CharField(widget = forms.HiddenInput())
+    class Meta:
+        model = Dowodos
+        fields = ["seria","pesel","adres","uzytkownikid"]
+
+class ZakladForm(ModelForm):
+
+    class Meta:
+        model = Zaklad
+        exclude = ('mozliwawygrana', )
+        fields = ["uzytkownikid", "wydarzenieid", "wybranykurs", "datazakladu", "ileobstawione"]

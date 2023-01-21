@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends "SportsBetting/AdminPanel.html" %}
+{% block content %}
+<form action="" method="post" class="">
+    {% csrf_token %}
+
+    <label>Id Ligi </label>
+    <input type="number" name="liga"><br><br>
+     <label for="passwd">Nazwa turnieju</label>
+    <input type="text" name="nazwa"><br><br>
+    <label for="">Data rozpoczęcia</label>
+    <input type="datetime-local" name="datastart"><br><br>
+     <label for="">Data zakończenia</label>
+    <input type="datetime-local" name="datakoniec"><br><br>
+    <button type="submit" class="btn btn-primary btn-lg"> Dodaj</button>
+
+{% endblock %}
+</form>
+</body>
+</html>

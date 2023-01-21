@@ -48,14 +48,62 @@
         </div>
     {% endif %}
 
-    <div class="right">
+    <div class="right" style="margin: 30px">
     {% block content %}
         {% if not admin%}
     Zaloguj sie
     {% endif %}
 
+        {% if admin %}
+            <div class="minicontainer" style="display: flex;flex-direction: row; justify-content: space-between">
+<div class="ligi" style="margin: 30px" >
+            <p style="text-align: center; line-height: 30px;">Najpopularniejsze ligi</p>
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nazwa ligi</th>
+      <th scope="col">Ilość wydarzeń</th>
+    </tr>
+  </thead>
+  <tbody>
+
+            {% for x in ligi %}
+                <tr>
+                 <td>{{ x.turniejid__ligaid__nazwa }}</td>
+                  <td>  {{ x.Liczba_Wydarzen }}</td>
+                </tr>
+            {% endfor %}
+
+</tbody>
+</table>
+</div>
+<div class="Najwiecejobstawiajacy" style="margin: 30px" >
+            <p style="text-align: center; line-height: 30px;">Najwięcej obstawiający użytkownicy</p>
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Suma zakładów</th>
+    </tr>
+  </thead>
+  <tbody>
+
+            {% for x in uzalezniency %}
+                <tr>
+                 <td>{{ x.uzytkownikid__username }}</td>
+                  <td>  {{ x.Suma_zakladow }}</td>
+                </tr>
+            {% endfor %}
+
+</tbody>
+</table>
+</div>
+</div>
 
 
+
+
+ {% endif %}
     {% endblock %}
     </div>
     </div>

@@ -1,13 +1,13 @@
 import datetime
 import decimal
 
-from django.contrib import messages
+from django.db.models import Count,Sum
 from django.core.exceptions import SuspiciousOperation
 from django.shortcuts import render, redirect
 from dateutil import parser
 from register.forms import RegisterForm,DowodForm
 from .models import Wydarzenie,Uzytkownik,Zaklad,Dowodos,Administrator,Liga,Turniej,Uczestnik
-
+import  pandas as pd
 
 # Create your views here.
 
@@ -106,8 +106,9 @@ def ZapiszZaklad(request):
 
 
 def AdminPanel(request):
-
-    return render(request,'SportsBetting/AdminPanel.html',{"admin" : request.session['Admin']})
+    najpopularniejszeLigi = Wydarzenie.objects.select_related('turniejid').select_related('turniejid__ligaid').values('turniejid__ligaid__nazwa').annotate(Liczba_Wydarzen = Count('wydarzenieid')).order_by('-Liczba_Wydarzen')
+    najwiecejobstawiajacy = Zaklad.objects.select_related('uzytkownikid').values('uzytkownikid__username').annotate(Suma_zakladow = Sum('ileobstawione')).order_by('-Suma_zakladow')
+    return render(request,'SportsBetting/AdminPanel.html',{"admin" : request.session['Admin'], 'ligi':najpopularniejszeLigi, 'uzalezniency':najwiecejobstawiajacy})
 
 
 def AdminLogin(request):

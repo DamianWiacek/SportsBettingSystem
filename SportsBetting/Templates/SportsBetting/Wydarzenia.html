@@ -22,7 +22,7 @@
   </div>
 </nav>
 
-
+<h2 style="margin-left: 10px;padding: 10px">Nadchodzące wydarzenia</h2>
 
 <table class="table">
   <thead>
@@ -37,7 +37,7 @@
       <th scope="col">Gość</th>
       <th scope="col">Kurs Gospodarz</th>
       <th scope="col">Kurs Gość</th>
-      <th scope="col">Wynik</th>
+
     </tr>
   </thead>
   <tbody>
@@ -53,7 +53,7 @@
       <td>{{ x.goscid.nazwa }}</td>
       <td> <a href="/Zaklady/{{x.gospodarzid.nazwa}}/{{ x.datazakonczenia }}/{{x.kursgospodarz}}/{{ x.wydarzenieid }}" style="text-decoration: none">{{ x.kursgospodarz }}</a></td>
       <td><a href="/Zaklady/{{x.goscid.nazwa}}/{{ x.datazakonczenia }}/{{x.kursgosc}}/{{ x.wydarzenieid }}"  style="text-decoration: none">{{ x.kursgosc }}</a></td>
-      <td >{{ x.wynik    }}</td>
+
     </tr>
     {% endfor %}
   </tbody>

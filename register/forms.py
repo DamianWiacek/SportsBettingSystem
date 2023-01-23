@@ -4,10 +4,10 @@ from SportsBetting.models import Uzytkownik, Zaklad,Dowodos
 
 
 class RegisterForm(ModelForm):
-
+    saldo = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     class Meta:
         model = Uzytkownik
-        fields = ["imie","nazwisko","wiek","username","passwd","email","adreskontabankowego"]
+        fields = ["imie","nazwisko","wiek","username","passwd","email","adreskontabankowego","saldo"]
 
 class DowodForm(ModelForm):
     uzytkownikid = forms.CharField(widget = forms.HiddenInput())

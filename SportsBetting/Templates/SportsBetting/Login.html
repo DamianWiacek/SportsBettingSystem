@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Betting System</title>
+</head>
+<body>
+ {% extends "SportsBetting/Home.html" %}
+ {% block content %}
+
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+
+        <a class="nav-link" href="/Rejestracja">Rejestracja</a>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<form action="" method="post" class="">
+    {% csrf_token %}
+
+    <label for="username">Username: </label>
+    <input type="text" name="username"><br><br>
+     <label for="passwd">Hasło:</label>
+    <input type="text" name="passwd"><br><br>
+    <button type="submit" class="btn btn-primary btn-lg"> Zaloguj</button>
+
+
+{% endblock %}
+</form>
+</body>
+</html>
